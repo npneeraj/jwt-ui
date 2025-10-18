@@ -72,7 +72,7 @@ impl Key {
   ///
   /// # Panics
   ///
-  /// If `n == 0 || n > 12`
+  /// If `n > 12`
   pub fn from_f(n: u8) -> Key {
     match n {
       0 => Key::F0,
@@ -251,5 +251,15 @@ mod tests {
       }),
       Key::Ctrl('c')
     );
+  }
+  #[test]
+  fn from_f_zero_is_valid() {
+      assert_eq!(Key::from_f(0), Key::F0);
+  }
+
+  #[test]
+  #[should_panic(expected = "unknown function key: F13")]
+  fn from_f_above_max_panics() {
+      let _ = Key::from_f(13);
   }
 }
