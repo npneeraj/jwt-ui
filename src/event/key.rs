@@ -252,6 +252,7 @@ mod tests {
       Key::Ctrl('c')
     );
   }
+
   #[test]
   fn from_f_zero_is_valid() {
       assert_eq!(Key::from_f(0), Key::F0);
